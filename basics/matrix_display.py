@@ -1,3 +1,5 @@
+"""This example shows how to display icons on the hub screen."""
+
 from pybricks.hubs import PrimeHub
 from pybricks.tools import wait
 from pybricks.parameters import Icon
