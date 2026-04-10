@@ -4,29 +4,32 @@ from pybricks.parameters import Port
 from pybricks.parameters import Color
 from pybricks.tools import wait
 
+WHEEL_DIAMETER_CM = 8.3
+WHEEL_CIRCUMFERENCE_CM = WHEEL_DIAMETER_CM * 3.14159
+
 hub = PrimeHub()
 
 motor_left = Motor(Port.A)
 motor_right = Motor(Port.E)
 
+# speed in degrees per second
 speed = 450
 
-#wheel_circumference_cm = 8.3 * 3.14159
-#distance_to_travel = 45.3
-#num_rotations = distance_to_travel / wheel_circumference_cm
-#num_degrees_to_turn = 360.0 * num_rotations
 
-#time_to_turn = num_degrees_to_turn / speed
-time_to_turn = 1.389
-#print(f"Time to turn: {time_to_turn}")
+distance_to_travel_cm = 45.3
+num_rotations = distance_to_travel_cm / WHEEL_CIRCUMFERENCE_CM
+num_degrees_to_turn = 360.0 * num_rotations
+
+# Convert to msec (speed is in degrees per second)
+time_to_turn = num_degrees_to_turn / speed * 1000
+print(f"Time to turn: {time_to_turn}")
 
 # Move forward
-motor_left.run(-1 * speed)
+motor_left.run(-speed)
 motor_right.run(speed)
+print("Moving forward")
 
 wait(time_to_turn)
 
 motor_left.stop()
 motor_right.stop()
-
-# Code to solve Mission 1
