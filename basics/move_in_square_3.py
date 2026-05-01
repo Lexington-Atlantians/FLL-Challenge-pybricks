@@ -33,7 +33,7 @@ while True:
         turn_speed = (minimum_speed * (turn_speed / abs(turn_speed)))
 
     # decide whether to stop
-    if degrees_off > (-1 * tolerance) and degrees_off < tolerance:
+    if abs(degrees_off) < tolerance:
         motor_left.stop()
         motor_right.stop()
         break
@@ -44,7 +44,7 @@ while True:
 
     # decide whether stalled and if so stop
     average_speed = motor_left.speed(100)
-    if abs(average_speed) < .5 and (degrees_off > (-1 * bigger_tolerance) and degrees_off < bigger_tolerance):
+    if abs(average_speed) < .5 and (abs(degrees_off) < bigger_tolerance):
         motor_left.stop()
         motor_right.stop()
         break
