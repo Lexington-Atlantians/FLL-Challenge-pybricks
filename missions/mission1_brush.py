@@ -11,6 +11,7 @@ hub = PrimeHub()
 
 motor_left = Motor(Port.A)
 motor_right = Motor(Port.E)
+arm = Motor(Port.C)
 
 # speed in degrees per second
 speed = 450
@@ -24,20 +25,24 @@ num_degrees_to_turn = 360.0 * num_rotations
 time_to_turn = num_degrees_to_turn / speed * 1000
 print(f"Time to turn: {time_to_turn}")
 
-# Move forward
+""" # Move forward
 motor_left.run(-speed)
 motor_right.run(speed)
-print("Moving forward")
+print("Moving forward") """
 
-wait(time_to_turn)
+""" wait(time_to_turn)
 
 motor_left.stop()
-motor_right.stop()
+motor_right.stop() """
 
 wait(500)
 
+#Arm movement (swipe the brushes)
+arm.dc(-50)
+wait(500)
+arm.brake() 
 
-# Move backward
+""" # Move backward
 motor_left.run(speed)
 motor_right.run(-speed)
 print("Moving backward")
@@ -46,3 +51,4 @@ wait(time_to_turn * 0.4)
 
 motor_left.stop()
 motor_right.stop()
+ """
